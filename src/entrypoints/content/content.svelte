@@ -17,7 +17,11 @@
   });
 </script>
 
+{#if }
+  
+{/if}
 <div>
+  
   <Tip {tipImgSrc} />
 </div>
 
