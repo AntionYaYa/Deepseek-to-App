@@ -1,0 +1,13 @@
+{
+  "name": "Deepseek",
+  "short_name": "Deepseek",
+  "start_url": "https://chat.deepseek.com/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "https://chat.deepseek.com/favicon.svg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
