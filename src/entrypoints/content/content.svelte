@@ -3,26 +3,38 @@
   import Tip from "@/lib/Tip.svelte";
   const tipImgSrc = browser.runtime.getURL("/deepseek/tip.jpg");
 
-  function isPWAInstalled() {
-    return window.matchMedia("(display-mode: standalone)").matches;
-  }
+  let showTip = $state(false);
+  let mediaQuery: MediaQueryList;
 
-  onMount(() => {
-    isPWAInstalled();
-    if (isPWAInstalled()) {
-      console.log("PWA 已安装");
-    } else {
-      console.log("PWA 未安装");
-    }
+  function checkDisplayMode() {
+    mediaQuery = window.matchMedia("(display-mode: standalone)");
+    return !mediaQuery.matches;
+  }
+  $effect.pre(() => {
+   const PWAInsatlled= localStorage.getItem("PWAInsatlled");
+  if (PWAInsatlled === 'Insatlled') {
+    showTip =false
+  }else{
+    showTip = checkDisplayMode();
+  }
   });
+
+  window.addEventListener("appinstalled", () => {
+    showTip = false; // 更新状态
+  });
+
+  function clickCloseTip(close:boolean) {
+    showTip = close
+    return showTip
+  }
 </script>
 
-{#if }
-  
-{/if}
 <div>
-  
-  <Tip {tipImgSrc} />
+  <Tip
+    {tipImgSrc}
+    {showTip}
+    closeTip={(close) => clickCloseTip(close)}
+  />
 </div>
 
 <style>

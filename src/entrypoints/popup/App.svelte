@@ -4,7 +4,7 @@
 
 <main>
   <div>
-    <Tip tipImgSrc='/deepseek/tip.jpg'/>
+    <Tip tipImgSrc='/deepseek/tip.jpg' showTip= {true}/>
   </div>
 </main>
 
